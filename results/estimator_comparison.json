@@ -1,0 +1,81 @@
+{
+ "seed": 20260712,
+ "sample": 40000,
+ "note": "Same 40k-learner sample as the main analysis. Non-invariant = global-mean-centered log-lag with a ridge penalty on the intercept; invariant = within-learner-centered log-lag with a free intercept. Both use ridge 1e-2 on the slope.",
+ "estimators": {
+  "inv": {
+   "label": "location-invariant (within-user center, free intercept)",
+   "overall_reliability": 0.348,
+   "overall_null": 0.026,
+   "per_bin": [
+    {
+     "bin": "20-29",
+     "reliability": 0.4,
+     "null": 0.01
+    },
+    {
+     "bin": "30-49",
+     "reliability": 0.305,
+     "null": -0.006
+    },
+    {
+     "bin": "50-79",
+     "reliability": 0.271,
+     "null": 0.123
+    },
+    {
+     "bin": "80-129",
+     "reliability": 0.313,
+     "null": 0.034
+    },
+    {
+     "bin": "130-249",
+     "reliability": 0.306,
+     "null": 0.198
+    },
+    {
+     "bin": "250+",
+     "reliability": 0.33,
+     "null": 0.102
+    }
+   ]
+  },
+  "noninv": {
+   "label": "location-non-invariant (global center, penalized intercept)",
+   "overall_reliability": 0.562,
+   "overall_null": 0.396,
+   "per_bin": [
+    {
+     "bin": "20-29",
+     "reliability": 0.616,
+     "null": 0.433
+    },
+    {
+     "bin": "30-49",
+     "reliability": 0.537,
+     "null": 0.367
+    },
+    {
+     "bin": "50-79",
+     "reliability": 0.427,
+     "null": 0.309
+    },
+    {
+     "bin": "80-129",
+     "reliability": 0.474,
+     "null": 0.296
+    },
+    {
+     "bin": "130-249",
+     "reliability": 0.519,
+     "null": 0.341
+    },
+    {
+     "bin": "250+",
+     "reliability": 0.458,
+     "null": -0.111
+    }
+   ]
+  }
+ }
+}

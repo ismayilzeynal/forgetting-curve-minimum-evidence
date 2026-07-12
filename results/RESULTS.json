@@ -1,0 +1,326 @@
+{
+ "config": {
+  "min_reviews": 20,
+  "sample": 40000,
+  "rows": 6795265,
+  "rel_ind": 0.7,
+  "rel_grp": 0.5,
+  "bins": [
+   "20-29",
+   "30-49",
+   "50-79",
+   "80-129",
+   "130-249",
+   "250+"
+  ],
+  "seed": 20260712,
+  "estimator": "within-user-centered log-lag, weighted binomial, no intercept penalty"
+ },
+ "data": {
+  "users_total": 115222,
+  "traces_total": 12854226,
+  "median_reviews": 34.0,
+  "eligible_ge20": 73521
+ },
+ "forgetting": {
+  "pct_negative_slope": 0.6088,
+  "median_slope": -0.03164,
+  "pooled_within_user_slope": -0.02769
+ },
+ "H1_reliability_horizon": {
+  "curve": [
+   {
+    "bin": "20-29",
+    "lo": 20,
+    "n_users": 6582,
+    "reliability": 0.4,
+    "ci": [
+     0.352,
+     0.445
+    ],
+    "null": 0.046,
+    "net": 0.354
+   },
+   {
+    "bin": "30-49",
+    "lo": 30,
+    "n_users": 7083,
+    "reliability": 0.305,
+    "ci": [
+     0.242,
+     0.364
+    ],
+    "null": 0.078,
+    "net": 0.227
+   },
+   {
+    "bin": "50-79",
+    "lo": 50,
+    "n_users": 6338,
+    "reliability": 0.271,
+    "ci": [
+     0.196,
+     0.35
+    ],
+    "null": 0.089,
+    "net": 0.182
+   },
+   {
+    "bin": "80-129",
+    "lo": 80,
+    "n_users": 6131,
+    "reliability": 0.313,
+    "ci": [
+     0.231,
+     0.389
+    ],
+    "null": 0.143,
+    "net": 0.17
+   },
+   {
+    "bin": "130-249",
+    "lo": 130,
+    "n_users": 6702,
+    "reliability": 0.306,
+    "ci": [
+     0.211,
+     0.409
+    ],
+    "null": 0.121,
+    "net": 0.185
+   },
+   {
+    "bin": "250+",
+    "lo": 250,
+    "n_users": 7164,
+    "reliability": 0.33,
+    "ci": [
+     0.134,
+     0.507
+    ],
+    "null": 0.02,
+    "net": 0.31
+   }
+  ],
+  "monotone_rho": 0.029,
+  "horizon_ind": null,
+  "horizon_grp": null,
+  "overall_reliability": 0.348,
+  "overall_null": 0.083
+ },
+ "H3_personalization": {
+  "per_bin": [
+   {
+    "bin": "20-29",
+    "base_logloss_per_trial": 0.3656,
+    "personalized": {
+     "n": 6516,
+     "median_gain": 0.0,
+     "ci": [
+      0.0,
+      0.0
+     ],
+     "favors": false
+    },
+    "partial_pooled": {
+     "n": 6516,
+     "median_gain": 0.0,
+     "ci": [
+      0.0,
+      0.0
+     ],
+     "favors": false
+    }
+   },
+   {
+    "bin": "30-49",
+    "base_logloss_per_trial": 0.3563,
+    "personalized": {
+     "n": 7060,
+     "median_gain": -0.0005,
+     "ci": [
+      -0.0008,
+      -0.0002
+     ],
+     "favors": false
+    },
+    "partial_pooled": {
+     "n": 7060,
+     "median_gain": 0.0,
+     "ci": [
+      0.0,
+      0.0
+     ],
+     "favors": false
+    }
+   },
+   {
+    "bin": "50-79",
+    "base_logloss_per_trial": 0.3293,
+    "personalized": {
+     "n": 6338,
+     "median_gain": -0.0009,
+     "ci": [
+      -0.0012,
+      -0.0006
+     ],
+     "favors": false
+    },
+    "partial_pooled": {
+     "n": 6338,
+     "median_gain": 0.0,
+     "ci": [
+      -0.0,
+      0.0
+     ],
+     "favors": false
+    }
+   },
+   {
+    "bin": "80-129",
+    "base_logloss_per_trial": 0.3059,
+    "personalized": {
+     "n": 6131,
+     "median_gain": -0.0007,
+     "ci": [
+      -0.0009,
+      -0.0005
+     ],
+     "favors": false
+    },
+    "partial_pooled": {
+     "n": 6131,
+     "median_gain": 0.0,
+     "ci": [
+      -0.0,
+      0.0
+     ],
+     "favors": false
+    }
+   },
+   {
+    "bin": "130-249",
+    "base_logloss_per_trial": 0.3,
+    "personalized": {
+     "n": 6702,
+     "median_gain": -0.0005,
+     "ci": [
+      -0.0006,
+      -0.0004
+     ],
+     "favors": false
+    },
+    "partial_pooled": {
+     "n": 6702,
+     "median_gain": 0.0,
+     "ci": [
+      -0.0,
+      0.0
+     ],
+     "favors": false
+    }
+   },
+   {
+    "bin": "250+",
+    "base_logloss_per_trial": 0.3006,
+    "personalized": {
+     "n": 7164,
+     "median_gain": -0.0002,
+     "ci": [
+      -0.0003,
+      -0.0001
+     ],
+     "favors": false
+    },
+    "partial_pooled": {
+     "n": 7164,
+     "median_gain": 0.0,
+     "ci": [
+      -0.0,
+      0.0
+     ],
+     "favors": false
+    }
+   }
+  ],
+  "horizon_personalized": null,
+  "horizon_partial_pooled": null,
+  "eb_median_shrinkage_weight": 0.306,
+  "eb_note": "Empirical-Bayes slope b_eb = w*b_personalized + (1-w)*b_population with w set to the bin's split-half reliability (Kelley regression to the mean).",
+  "pop_fit": "training portions only (out-of-sample for each learner's held-out tail)",
+  "full_personalization_robustness": [
+   {
+    "bin": "20-29",
+    "gain": {
+     "n": 6516,
+     "median_gain": 0.0008,
+     "ci": [
+      -0.0001,
+      0.002
+     ],
+     "favors": false
+    }
+   },
+   {
+    "bin": "30-49",
+    "gain": {
+     "n": 7060,
+     "median_gain": -0.002,
+     "ci": [
+      -0.0034,
+      -0.0009
+     ],
+     "favors": false
+    }
+   },
+   {
+    "bin": "50-79",
+    "gain": {
+     "n": 6338,
+     "median_gain": -0.0014,
+     "ci": [
+      -0.0022,
+      -0.0006
+     ],
+     "favors": false
+    }
+   },
+   {
+    "bin": "80-129",
+    "gain": {
+     "n": 6131,
+     "median_gain": -0.001,
+     "ci": [
+      -0.0017,
+      -0.0003
+     ],
+     "favors": false
+    }
+   },
+   {
+    "bin": "130-249",
+    "gain": {
+     "n": 6702,
+     "median_gain": 0.0001,
+     "ci": [
+      -0.0004,
+      0.0004
+     ],
+     "favors": false
+    }
+   },
+   {
+    "bin": "250+",
+    "gain": {
+     "n": 7164,
+     "median_gain": 0.001,
+     "ci": [
+      0.0007,
+      0.0013
+     ],
+     "favors": true
+    }
+   }
+  ]
+ }
+}

@@ -1,0 +1,5 @@
+data/
+*.gz
+__pycache__/
+*.pyc
+draft/
