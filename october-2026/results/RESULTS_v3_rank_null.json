@@ -1,0 +1,54 @@
+{
+ "n_permutations": 5,
+ "bins": [
+  {
+   "bin": "20-29",
+   "observed_spearman_sb": 0.4106,
+   "null_mean": 0.0514,
+   "null_min": 0.0314,
+   "null_max": 0.0986
+  },
+  {
+   "bin": "30-49",
+   "observed_spearman_sb": 0.3528,
+   "null_mean": 0.0858,
+   "null_min": 0.0667,
+   "null_max": 0.1014
+  },
+  {
+   "bin": "50-79",
+   "observed_spearman_sb": 0.3813,
+   "null_mean": 0.0797,
+   "null_min": 0.0613,
+   "null_max": 0.1087
+  },
+  {
+   "bin": "80-129",
+   "observed_spearman_sb": 0.3793,
+   "null_mean": 0.0748,
+   "null_min": 0.0329,
+   "null_max": 0.1312
+  },
+  {
+   "bin": "130-249",
+   "observed_spearman_sb": 0.4308,
+   "null_mean": 0.0389,
+   "null_min": 0.0209,
+   "null_max": 0.0564
+  },
+  {
+   "bin": "250+",
+   "observed_spearman_sb": 0.5048,
+   "null_mean": 0.0212,
+   "null_min": 0.0003,
+   "null_max": 0.0372
+  },
+  {
+   "bin": "all",
+   "observed_spearman_sb": 0.3964,
+   "null_mean": 0.0728,
+   "null_min": 0.0595,
+   "null_max": 0.0891
+  }
+ ]
+}

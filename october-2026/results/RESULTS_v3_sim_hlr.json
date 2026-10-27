@@ -1,0 +1,62 @@
+{
+ "note": "Simulation on real designs; outcomes are binomial draws from a known model, not data.",
+ "tau2_hat": 0.0033667,
+ "mu_hat": [
+  2.326447,
+  -0.034076
+ ],
+ "hlr_world": {
+  "tau2_u_true": 8.073141,
+  "tau2_u_est_train": 7.088152,
+  "reference_half_life_days": 30.433,
+  "n_learners": 40000,
+  "r0.85_population": {
+   "mean_abs_dev": 0.2264,
+   "share_dev_gt_0_05": 0.8484,
+   "mean_achieved": 0.726,
+   "reviews_per_30_days": 4.204
+  },
+  "r0.85_naive": {
+   "mean_abs_dev": 0.059,
+   "share_dev_gt_0_05": 0.3497,
+   "mean_achieved": 0.8423,
+   "reviews_per_30_days": 20.18
+  },
+  "r0.85_shrunk": {
+   "mean_abs_dev": 0.0562,
+   "share_dev_gt_0_05": 0.3393,
+   "mean_achieved": 0.8408,
+   "reviews_per_30_days": 22.133
+  },
+  "r0.85_oracle": {
+   "mean_abs_dev": 0.0,
+   "share_dev_gt_0_05": 0.0,
+   "mean_achieved": 0.85,
+   "reviews_per_30_days": 26.367
+  },
+  "r0.90_population": {
+   "mean_abs_dev": 0.186,
+   "share_dev_gt_0_05": 0.7677,
+   "mean_achieved": 0.7827,
+   "reviews_per_30_days": 6.485
+  },
+  "r0.90_naive": {
+   "mean_abs_dev": 0.0427,
+   "share_dev_gt_0_05": 0.2394,
+   "mean_achieved": 0.8919,
+   "reviews_per_30_days": 31.127
+  },
+  "r0.90_shrunk": {
+   "mean_abs_dev": 0.0405,
+   "share_dev_gt_0_05": 0.228,
+   "mean_achieved": 0.8913,
+   "reviews_per_30_days": 34.14
+  },
+  "r0.90_oracle": {
+   "mean_abs_dev": 0.0,
+   "share_dev_gt_0_05": 0.0,
+   "mean_achieved": 0.9,
+   "reviews_per_30_days": 40.671
+  }
+ }
+}

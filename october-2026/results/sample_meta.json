@@ -1,0 +1,13 @@
+{
+ "seed": 20260712,
+ "sample": 40000,
+ "users_total": 115222,
+ "traces_total": 12854226,
+ "median_reviews": 34.0,
+ "eligible_ge20": 73521,
+ "lexemes_total": 19279,
+ "rows_sample_raw": 6795265,
+ "rows_sample_delta_pos": 6795265,
+ "users_in_rows": 40000,
+ "lexemes_in_sample": 17905
+}

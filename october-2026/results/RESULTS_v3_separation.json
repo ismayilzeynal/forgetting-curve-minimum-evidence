@@ -1,0 +1,110 @@
+{
+ "share_learners_perfect_half": 0.0784,
+ "share_learners_perfect_overall": 0.0288,
+ "v2_estimator": {
+  "pearson_sb": 0.5336,
+  "spearman_sb": 0.3902,
+  "share_abs_slope_gt_5": 0.0375,
+  "slope_p1_p50_p99": [
+   -7.022,
+   -0.029,
+   8.336
+  ],
+  "max_abs_slope": 16819.1,
+  "pearson_sb_without_top1pct": 0.0067
+ },
+ "prior_sensitivity": [
+  {
+   "prior_sd_intercept": null,
+   "prior_sd_rate": 10.0,
+   "pearson_sb": 0.5336,
+   "spearman_sb": 0.3902,
+   "pearson_sb_bins": [
+    -0.309,
+    0.561,
+    -0.005,
+    0.272,
+    0.717,
+    0.784
+   ],
+   "spearman_sb_bins": [
+    0.378,
+    0.357,
+    0.379,
+    0.383,
+    0.437,
+    0.506
+   ],
+   "cov_halves": 24037.56163
+  },
+  {
+   "prior_sd_intercept": 2.5,
+   "prior_sd_rate": 2.5,
+   "pearson_sb": 0.5799,
+   "spearman_sb": 0.3742,
+   "pearson_sb_bins": [
+    0.246,
+    0.048,
+    0.276,
+    0.491,
+    0.382,
+    0.608
+   ],
+   "spearman_sb_bins": [
+    0.375,
+    0.331,
+    0.362,
+    0.375,
+    0.431,
+    0.503
+   ],
+   "cov_halves": 3327.81702
+  },
+  {
+   "prior_sd_intercept": 2.5,
+   "prior_sd_rate": 1.0,
+   "pearson_sb": 0.5903,
+   "spearman_sb": 0.3998,
+   "pearson_sb_bins": [
+    0.357,
+    -0.056,
+    0.065,
+    0.099,
+    0.27,
+    0.791
+   ],
+   "spearman_sb_bins": [
+    0.414,
+    0.358,
+    0.382,
+    0.382,
+    0.435,
+    0.504
+   ],
+   "cov_halves": 13.54121
+  },
+  {
+   "prior_sd_intercept": 1.5,
+   "prior_sd_rate": 1.0,
+   "pearson_sb": 0.8113,
+   "spearman_sb": 0.3976,
+   "pearson_sb_bins": [
+    0.297,
+    -0.044,
+    0.36,
+    0.641,
+    -0.219,
+    0.887
+   ],
+   "spearman_sb_bins": [
+    0.415,
+    0.356,
+    0.381,
+    0.373,
+    0.435,
+    0.506
+   ],
+   "cov_halves": 49.27169
+  }
+ ]
+}

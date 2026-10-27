@@ -1,0 +1,50 @@
+{
+ "folds": "two random learner folds (seed 20260713); every learner's offsets come from the model fit on the other fold",
+ "lexemes_in_sample": 17905,
+ "language_pairs": 8,
+ "coefficients": {
+  "fold0": {
+   "strength_model": {
+    "intercept": -0.9383,
+    "d_lex": 0.9657,
+    "log1p_history_seen": -0.0853,
+    "smoothed_accuracy": 1.9784,
+    "log_lag": -0.0334,
+    "n_langpair_dummies": 7
+   },
+   "hlr": {
+    "bias": 7.3864,
+    "sqrt_1p_history_correct": 0.2323,
+    "sqrt_1p_history_wrong": -1.2824,
+    "converged": false,
+    "iterations": 2000,
+    "other_fold_logloss_per_trial": 0.5629,
+    "other_fold_mae_p_recall": 0.1404
+   }
+  },
+  "fold1": {
+   "strength_model": {
+    "intercept": -1.0176,
+    "d_lex": 0.9495,
+    "log1p_history_seen": -0.1005,
+    "smoothed_accuracy": 2.163,
+    "log_lag": -0.0323,
+    "n_langpair_dummies": 7
+   },
+   "hlr": {
+    "bias": 7.5288,
+    "sqrt_1p_history_correct": 0.2405,
+    "sqrt_1p_history_wrong": -1.373,
+    "converged": false,
+    "iterations": 2000,
+    "other_fold_logloss_per_trial": 0.5623,
+    "other_fold_mae_p_recall": 0.1413
+   }
+  }
+ },
+ "hlr_population_half_life_days": {
+  "median": 73.3548,
+  "p25": 46.3899,
+  "p75": 113.0354
+ }
+}

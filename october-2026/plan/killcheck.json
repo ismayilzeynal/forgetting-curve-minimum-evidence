@@ -1,0 +1,11 @@
+{
+ "users_total": 115222,
+ "traces_total": 12854226,
+ "median_reviews": 34.0,
+ "eligible_ge20": 73521,
+ "sampled": 10000,
+ "rows_loaded": 1692961,
+ "pct_negative_slope": 0.6115,
+ "slope_median": -0.00269,
+ "overall_split_half_reliability": 0.4186
+}

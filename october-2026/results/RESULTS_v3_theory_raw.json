@@ -1,0 +1,360 @@
+{
+ "kind": "raw",
+ "note": "gains are held-out log-loss reductions per trial (nats) relative to the population policy",
+ "bins": [
+  {
+   "bin": "20-29",
+   "n_learners": 6582,
+   "heldout_trials": 92965,
+   "tau2_train": 0.0127222,
+   "population_value": -0.040727,
+   "base_logloss_per_trial": 0.3095,
+   "observed_naive": -0.0223315,
+   "observed_naive_ci": [
+    -0.0310552,
+    -0.0160345
+   ],
+   "observed_shrunk": 0.0012205,
+   "observed_shrunk_ci": [
+    0.0008167,
+    0.0016467
+   ],
+   "predicted_naive": -0.0084441,
+   "predicted_naive_ci": [
+    -0.0096592,
+    -0.0074173
+   ],
+   "predicted_shrunk": 0.0013784,
+   "predicted_shrunk_ci": [
+    0.0012712,
+    0.0014869
+   ],
+   "predicted_oracle": 0.0040807,
+   "predicted_oracle_ci": [
+    0.0038431,
+    0.0043231
+   ],
+   "mean_J_per_trial": 0.641507,
+   "median_w_naive": 0.5349,
+   "median_w_shrunk": 0.0372,
+   "median_learner_gain_naive": -2.1e-06,
+   "median_learner_gain_shrunk": 3.11e-05,
+   "latent_cov_train_heldout": 0.0111482,
+   "latent_tau2_train_4d": 0.0146521,
+   "latent_corr_train_heldout": 0.9979,
+   "predicted_naive_drift": -0.0097155,
+   "predicted_shrunk_drift": 0.0008282
+  },
+  {
+   "bin": "30-49",
+   "n_learners": 7083,
+   "heldout_trials": 139559,
+   "tau2_train": 0.0090332,
+   "population_value": -0.040498,
+   "base_logloss_per_trial": 0.30578,
+   "observed_naive": -0.0353595,
+   "observed_naive_ci": [
+    -0.0432773,
+    -0.0290133
+   ],
+   "observed_shrunk": 9.06e-05,
+   "observed_shrunk_ci": [
+    -0.0002391,
+    0.000423
+   ],
+   "predicted_naive": -0.0110538,
+   "predicted_naive_ci": [
+    -0.0125847,
+    -0.0098577
+   ],
+   "predicted_shrunk": 0.0010649,
+   "predicted_shrunk_ci": [
+    0.0010087,
+    0.0011227
+   ],
+   "predicted_oracle": 0.0033995,
+   "predicted_oracle_ci": [
+    0.0032714,
+    0.003532
+   ],
+   "mean_J_per_trial": 0.752665,
+   "median_w_naive": 0.8196,
+   "median_w_shrunk": 0.1054,
+   "median_learner_gain_naive": -0.0002161,
+   "median_learner_gain_shrunk": 1.73e-05,
+   "latent_cov_train_heldout": 0.0054584,
+   "latent_tau2_train_4d": 0.0093647,
+   "latent_corr_train_heldout": 0.833,
+   "predicted_naive_drift": -0.0133844,
+   "predicted_shrunk_drift": 0.000183
+  },
+  {
+   "bin": "50-79",
+   "n_learners": 6338,
+   "heldout_trials": 182712,
+   "tau2_train": 0.007599,
+   "population_value": -0.037141,
+   "base_logloss_per_trial": 0.30668,
+   "observed_naive": -0.0290707,
+   "observed_naive_ci": [
+    -0.0345103,
+    -0.0240179
+   ],
+   "observed_shrunk": 0.0005379,
+   "observed_shrunk_ci": [
+    -0.0005313,
+    0.0022624
+   ],
+   "predicted_naive": -0.0071471,
+   "predicted_naive_ci": [
+    -0.0081537,
+    -0.0063022
+   ],
+   "predicted_shrunk": 0.0013006,
+   "predicted_shrunk_ci": [
+    0.0012497,
+    0.0013538
+   ],
+   "predicted_oracle": 0.0033652,
+   "predicted_oracle_ci": [
+    0.0032516,
+    0.0034778
+   ],
+   "mean_J_per_trial": 0.885689,
+   "median_w_naive": 0.9652,
+   "median_w_shrunk": 0.2565,
+   "median_learner_gain_naive": -0.0007838,
+   "median_learner_gain_shrunk": 1.4e-05,
+   "latent_cov_train_heldout": 0.0038721,
+   "latent_tau2_train_4d": 0.0077567,
+   "latent_corr_train_heldout": 0.7471,
+   "predicted_naive_drift": -0.010255,
+   "predicted_shrunk_drift": -2.2e-06
+  },
+  {
+   "bin": "80-129",
+   "n_learners": 6131,
+   "heldout_trials": 261726,
+   "tau2_train": 0.0047299,
+   "population_value": -0.033629,
+   "base_logloss_per_trial": 0.29671,
+   "observed_naive": -0.0218321,
+   "observed_naive_ci": [
+    -0.0314984,
+    -0.0144623
+   ],
+   "observed_shrunk": 2.47e-05,
+   "observed_shrunk_ci": [
+    -0.000346,
+    0.0005363
+   ],
+   "predicted_naive": -0.00391,
+   "predicted_naive_ci": [
+    -0.0043082,
+    -0.0035778
+   ],
+   "predicted_shrunk": 0.0007827,
+   "predicted_shrunk_ci": [
+    0.0007522,
+    0.0008122
+   ],
+   "predicted_oracle": 0.0020263,
+   "predicted_oracle_ci": [
+    0.0019716,
+    0.0020836
+   ],
+   "mean_J_per_trial": 0.8568,
+   "median_w_naive": 0.9847,
+   "median_w_shrunk": 0.2866,
+   "median_learner_gain_naive": -0.0007311,
+   "median_learner_gain_shrunk": 1.11e-05,
+   "latent_cov_train_heldout": 0.0017659,
+   "latent_tau2_train_4d": 0.0047806,
+   "latent_corr_train_heldout": 0.4269,
+   "predicted_naive_drift": -0.0063761,
+   "predicted_shrunk_drift": -0.0002066
+  },
+  {
+   "bin": "130-249",
+   "n_learners": 6702,
+   "heldout_trials": 445913,
+   "tau2_train": 0.0041296,
+   "population_value": -0.033607,
+   "base_logloss_per_trial": 0.30169,
+   "observed_naive": -0.0145567,
+   "observed_naive_ci": [
+    -0.0196466,
+    -0.0100646
+   ],
+   "observed_shrunk": 0.0053652,
+   "observed_shrunk_ci": [
+    -8.54e-05,
+    0.0144974
+   ],
+   "predicted_naive": -0.0013469,
+   "predicted_naive_ci": [
+    -0.001496,
+    -0.0012144
+   ],
+   "predicted_shrunk": 0.0007947,
+   "predicted_shrunk_ci": [
+    0.0007709,
+    0.000818
+   ],
+   "predicted_oracle": 0.0017048,
+   "predicted_oracle_ci": [
+    0.0016685,
+    0.0017445
+   ],
+   "mean_J_per_trial": 0.825639,
+   "median_w_naive": 0.9927,
+   "median_w_shrunk": 0.3916,
+   "median_learner_gain_naive": -0.0005756,
+   "median_learner_gain_shrunk": 1.2e-05,
+   "latent_cov_train_heldout": 0.0018065,
+   "latent_tau2_train_4d": 0.0041576,
+   "latent_corr_train_heldout": 0.3825,
+   "predicted_naive_drift": -0.0032468,
+   "predicted_shrunk_drift": -0.0001048
+  },
+  {
+   "bin": "250+",
+   "n_learners": 7164,
+   "heldout_trials": 1326094,
+   "tau2_train": 0.0022242,
+   "population_value": -0.032623,
+   "base_logloss_per_trial": 0.31938,
+   "observed_naive": -0.0110568,
+   "observed_naive_ci": [
+    -0.0190251,
+    -0.0035108
+   ],
+   "observed_shrunk": 0.0069946,
+   "observed_shrunk_ci": [
+    0.0016693,
+    0.0141979
+   ],
+   "predicted_naive": 3.9e-05,
+   "predicted_naive_ci": [
+    1.04e-05,
+    6.65e-05
+   ],
+   "predicted_shrunk": 0.0005344,
+   "predicted_shrunk_ci": [
+    0.0005164,
+    0.0005524
+   ],
+   "predicted_oracle": 0.0008705,
+   "predicted_oracle_ci": [
+    0.0008502,
+    0.0008896
+   ],
+   "mean_J_per_trial": 0.782808,
+   "median_w_naive": 0.9973,
+   "median_w_shrunk": 0.4819,
+   "median_learner_gain_naive": -0.0001871,
+   "median_learner_gain_shrunk": 5.4e-06,
+   "latent_cov_train_heldout": 0.0009148,
+   "latent_tau2_train_4d": 0.002218,
+   "latent_corr_train_heldout": 0.3013,
+   "predicted_naive_drift": -0.0009802,
+   "predicted_shrunk_drift": -9.33e-05
+  }
+ ],
+ "level_control": [
+  {
+   "bin": "20-29",
+   "n_learners": 6582,
+   "observed_level_gain": 0.007083,
+   "observed_level_gain_ci": [
+    0.0057175,
+    0.0084904
+   ],
+   "predicted_level_gain": 0.012355,
+   "predicted_level_oracle": 0.018392,
+   "tau2_intercept_conditional": 0.421408
+  },
+  {
+   "bin": "30-49",
+   "n_learners": 7083,
+   "observed_level_gain": 0.00523,
+   "observed_level_gain_ci": [
+    0.0041634,
+    0.006392
+   ],
+   "predicted_level_gain": 0.012203,
+   "predicted_level_oracle": 0.016883,
+   "tau2_intercept_conditional": 0.393037
+  },
+  {
+   "bin": "50-79",
+   "n_learners": 6338,
+   "observed_level_gain": 0.004585,
+   "observed_level_gain_ci": [
+    0.002705,
+    0.0060584
+   ],
+   "predicted_level_gain": 0.011153,
+   "predicted_level_oracle": 0.014455,
+   "tau2_intercept_conditional": 0.345238
+  },
+  {
+   "bin": "80-129",
+   "n_learners": 6131,
+   "observed_level_gain": 0.004248,
+   "observed_level_gain_ci": [
+    0.0009265,
+    0.0063996
+   ],
+   "predicted_level_gain": 0.012096,
+   "predicted_level_oracle": 0.014522,
+   "tau2_intercept_conditional": 0.353625
+  },
+  {
+   "bin": "130-249",
+   "n_learners": 6702,
+   "observed_level_gain": 0.001751,
+   "observed_level_gain_ci": [
+    -0.0057149,
+    0.0069061
+   ],
+   "predicted_level_gain": 0.011649,
+   "predicted_level_oracle": 0.013297,
+   "tau2_intercept_conditional": 0.323275
+  },
+  {
+   "bin": "250+",
+   "n_learners": 7164,
+   "observed_level_gain": -0.007402,
+   "observed_level_gain_ci": [
+    -0.026079,
+    0.0052027
+   ],
+   "predicted_level_gain": 0.012045,
+   "predicted_level_oracle": 0.01268,
+   "tau2_intercept_conditional": 0.305343
+  }
+ ],
+ "all": {
+  "bin": "all",
+  "n_learners": 40000,
+  "observed_naive": -0.0160026,
+  "observed_naive_ci": [
+   -0.0205188,
+   -0.0119567
+  ],
+  "observed_shrunk": 0.0048587,
+  "observed_shrunk_ci": [
+   0.001448,
+   0.0087359
+  ],
+  "predicted_naive": -0.0021257,
+  "predicted_shrunk": 0.0007278,
+  "predicted_oracle": 0.0015981
+ },
+ "agreement": {
+  "pearson_pred_obs_12cells": 0.9237,
+  "mean_abs_diff": 0.009669,
+  "share_obs_within_pred_ci": 0.0
+ }
+}

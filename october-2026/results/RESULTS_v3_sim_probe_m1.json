@@ -1,0 +1,152 @@
+{
+ "note": "Simulation on real designs; outcomes are binomial draws from a known model, not data.",
+ "tau2_hat": 0.0033667,
+ "mu_hat": [
+  2.326447,
+  -0.034076
+ ],
+ "observed_design": {
+  "tau2_est": 0.0032354,
+  "bins": [
+   {
+    "bin": "20-29",
+    "mean_rho_model": 0.0612,
+    "rho_true": 0.0488,
+    "per_review_error_var": 6.55492,
+    "n_star_050_est": 2026.0,
+    "n_star_050_true": 1959.7
+   },
+   {
+    "bin": "30-49",
+    "mean_rho_model": 0.1068,
+    "rho_true": 0.1165,
+    "per_review_error_var": 1.78185,
+    "n_star_050_est": 550.7,
+    "n_star_050_true": 532.7
+   },
+   {
+    "bin": "50-79",
+    "mean_rho_model": 0.1878,
+    "rho_true": 0.1879,
+    "per_review_error_var": 0.9881,
+    "n_star_050_est": 305.4,
+    "n_star_050_true": 295.4
+   },
+   {
+    "bin": "80-129",
+    "mean_rho_model": 0.2688,
+    "rho_true": 0.2818,
+    "per_review_error_var": 0.91718,
+    "n_star_050_est": 283.5,
+    "n_star_050_true": 274.2
+   },
+   {
+    "bin": "130-249",
+    "mean_rho_model": 0.3757,
+    "rho_true": 0.3861,
+    "per_review_error_var": 0.91949,
+    "n_star_050_est": 284.2,
+    "n_star_050_true": 274.9
+   },
+   {
+    "bin": "250+",
+    "mean_rho_model": 0.5904,
+    "rho_true": 0.5944,
+    "per_review_error_var": 0.96338,
+    "n_star_050_est": 297.8,
+    "n_star_050_true": 288.0
+   },
+   {
+    "bin": "all",
+    "mean_rho_model": 0.2686,
+    "rho_true": 0.2723,
+    "per_review_error_var": 1.09664,
+    "n_star_050_est": 338.9,
+    "n_star_050_true": 327.9
+   }
+  ],
+  "personalization": {
+   "tau2_train": 0.0031914,
+   "observed_naive": -0.0005016,
+   "predicted_naive": -0.0023981,
+   "observed_shrunk": 0.0010985,
+   "predicted_shrunk": 0.0006245,
+   "observed_oracle": 0.0012851,
+   "predicted_oracle": 0.0012581,
+   "n_learners": 40000
+  },
+  "multiplier": 1.0
+ },
+ "probing_design_2x_spread": {
+  "tau2_est": 0.0032101,
+  "bins": [
+   {
+    "bin": "20-29",
+    "mean_rho_model": 0.1568,
+    "rho_true": 0.1463,
+    "per_review_error_var": 1.67576,
+    "n_star_050_est": 522.0,
+    "n_star_050_true": 501.0
+   },
+   {
+    "bin": "30-49",
+    "mean_rho_model": 0.2573,
+    "rho_true": 0.259,
+    "per_review_error_var": 0.48087,
+    "n_star_050_est": 149.8,
+    "n_star_050_true": 143.8
+   },
+   {
+    "bin": "50-79",
+    "mean_rho_model": 0.4101,
+    "rho_true": 0.414,
+    "per_review_error_var": 0.2617,
+    "n_star_050_est": 81.5,
+    "n_star_050_true": 78.2
+   },
+   {
+    "bin": "80-129",
+    "mean_rho_model": 0.5281,
+    "rho_true": 0.5354,
+    "per_review_error_var": 0.24218,
+    "n_star_050_est": 75.4,
+    "n_star_050_true": 72.4
+   },
+   {
+    "bin": "130-249",
+    "mean_rho_model": 0.6557,
+    "rho_true": 0.6628,
+    "per_review_error_var": 0.24015,
+    "n_star_050_est": 74.8,
+    "n_star_050_true": 71.8
+   },
+   {
+    "bin": "250+",
+    "mean_rho_model": 0.8232,
+    "rho_true": 0.8276,
+    "per_review_error_var": 0.24891,
+    "n_star_050_est": 77.5,
+    "n_star_050_true": 74.4
+   },
+   {
+    "bin": "all",
+    "mean_rho_model": 0.4746,
+    "rho_true": 0.477,
+    "per_review_error_var": 0.28795,
+    "n_star_050_est": 89.7,
+    "n_star_050_true": 86.1
+   }
+  ],
+  "personalization": {
+   "tau2_train": 0.0031799,
+   "observed_naive": -0.0176616,
+   "predicted_naive": -0.0005514,
+   "observed_shrunk": 0.0045303,
+   "predicted_shrunk": 0.0036972,
+   "observed_oracle": 0.005383,
+   "predicted_oracle": 0.0050579,
+   "n_learners": 40000
+  },
+  "multiplier": 1.0
+ }
+}
