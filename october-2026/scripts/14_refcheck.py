@@ -5,7 +5,7 @@
 # Usage: python 14_refcheck.py <references.md> <out.json>
 import sys, re, json, time, urllib.request, unicodedata
 
-UA = {"User-Agent": "HQ-refcheck (mailto:ismayil.zeynalov.bakhish@bsu.edu.az)"}
+UA = {"User-Agent": "refcheck (mailto:ismayil.zeynalov.bakhish@bsu.edu.az)"}
 
 
 def norm(s):
@@ -27,7 +27,7 @@ for l in lines:
         out.append(rec); continue
     doi = m.group(1).rstrip(".")
     try:
-        if doi.lower().startswith(("10.7910/", "10.17605/")):     # DataCite: Dataverse, OSF (r1 fix)
+        if doi.lower().startswith(("10.7910/", "10.17605/")):     # DataCite: Dataverse, OSF
             a = get("https://api.datacite.org/dois/" + doi)["data"]["attributes"]
             title = a["titles"][0]["title"]; fams = [c["name"].split(",")[0] for c in a["creators"]]
             year = a["publicationYear"]; vol = iss = page = None

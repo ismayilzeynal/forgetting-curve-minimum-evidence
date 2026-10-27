@@ -30,7 +30,7 @@ _today = datetime.date.today()
 DATE = os.environ.get("CBB_DATE") or "%d %s %d" % (_today.day, _today.strftime("%B"), _today.year)
 TMP = tempfile.mkdtemp(prefix="cbb_build_")
 
-# r1 fix (desk-r1-01, methods-r1-01): the code availability statement says only what is public.
+# The code availability statement says only what is public.
 # Default: the public repository holds the July 2026 bundle (plan, confirmatory code and results);
 # the October code, results and addendum (repo-v4/) are available on request. After repo-v4/ has been
 # pushed and checked against repo-v4/MANIFEST.sha256, build with --repo-v4-public to name the
@@ -52,7 +52,7 @@ else:
                  "in a public repository whose link is given on the title page. The code that reproduces every "
                  "number reported here from the public traces, the result files and the exploratory addendum of "
                  "14 October 2026 are available from the author on request.")
-# r2 fix (desk-r2-09): the cover letter says plainly what is public and what is on request
+# The cover letter says plainly what is public and what is on request
 if REPO_V4_PUBLIC:
     CODE_COVER = ("The code and result files of every analysis reported here, the plan and the addendum are public "
                   "in the repository named in the code availability statement.")
@@ -94,6 +94,8 @@ def assemble():
              "part3_results_b.md", "part4_discussion.md", "part5_back.md", "part9_references.md"]
     body = "\n\n".join(rd(f).strip() for f in parts) + "\n"
     body = body.replace("{{TABLE2}}", rd("table2.md").strip()).replace("{{TABLE3}}", rd("table3.md").strip())
+    # Table 4: concentration of the shrunk gains in all six bins of both rates
+    body = body.replace("{{TABLE4}}", rd("table4.md").strip())
     for k, v in figs.items():
         body = body.replace("{{%s}}" % k, v)
     out = {}
@@ -177,6 +179,19 @@ def pandoc(md, out, ref, hard_breaks=False):
                     "--resource-path", DRAFT], check=True)
 
 
+def keep_captions_with_tables(path):
+    # a table caption (a body paragraph "Table N." or "Table SN." directly before a table) is kept on
+    # the page of the table's first row
+    from docx import Document
+    from docx.oxml.ns import qn
+    d = Document(path)
+    for para in d.paragraphs:
+        nxt = para._p.getnext()
+        if nxt is not None and nxt.tag == qn("w:tbl") and re.match(r"Table S?\d+\.", para.text):
+            para.paragraph_format.keep_with_next = True
+    d.save(path)
+
+
 def add_page_numbers(path):
     from docx import Document
     from docx.oxml import OxmlElement
@@ -223,7 +238,7 @@ def clean_meta(path, title, author):
         for tag in ("Company", "Manager", "HyperlinkBase"):
             x = re.sub(r"<%s>.*?</%s>" % (tag, tag), "", x, flags=re.S)
         x = re.sub(r"<Template>.*?</Template>", "<Template>Normal.dotm</Template>", x, flags=re.S)
-        # r2 fix (desk-r2-13): drop the template's stale statistics (all optional elements); Word
+        # drop the template's stale statistics (all optional elements); Word
         # recomputes them on save, and the build records Word's own counts in build_stats.json
         for tag in ("TotalTime", "Pages", "Words", "Characters", "CharactersWithSpaces", "Lines", "Paragraphs"):
             x = re.sub(r"<%s>.*?</%s>|<%s\s*/>" % (tag, tag, tag), "", x, flags=re.S)
@@ -299,6 +314,7 @@ def main():
     for md, name, ttl, auth, hb in targets:
         p = os.path.join(PKG, name)
         pandoc(md, p, ref, hard_breaks=hb)
+        keep_captions_with_tables(p)
         add_page_numbers(p)
         clean_meta(p, ttl, auth)
         stats["files"][name] = dict(omml_inline_and_display=omml_count(p)[0], omml_display=omml_count(p)[1])

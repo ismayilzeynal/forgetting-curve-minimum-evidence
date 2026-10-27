@@ -15,7 +15,7 @@ RESULTS = os.environ.get("CBB_RESULTS") or RESULTS
 FIG = os.path.join(os.path.dirname(HERE), "draft", "figures")
 os.makedirs(FIG, exist_ok=True)
 J = lambda f: json.load(open(os.path.join(RESULTS, f), encoding="utf-8"))
-# r1 fix (desk-r1-09, desk-r1-10): lettering at least 8 pt, mathtext in Arial, plain tick labels on
+# v4 revision: lettering at least 8 pt, mathtext in Arial, plain tick labels on
 # log axes (no superscripted exponents), PNG written as RGB at 600 dpi
 plt.rcParams.update({"font.family": "Arial", "font.size": 8.5, "axes.spines.top": False,
                      "axes.spines.right": False, "savefig.dpi": 600, "legend.frameon": False,
@@ -74,7 +74,7 @@ v, e = err(rows, "latent_corr_rate", "latent_corr_rate_ci")
 ax[1].errorbar(x - 0.08, v, yerr=e, marker="o", color=C["raw"], ms=4, lw=1, capsize=2, label="Rate")
 v, e = err(rows, "latent_corr_intercept", "latent_corr_intercept_ci")
 ax[1].errorbar(x + 0.08, v, yerr=e, marker="^", ls="--", color=C["icpt"], ms=4, lw=1, capsize=2, label="Level")
-# r1 fix (desk-r1-12): the 20-29 four-dimensional fit did not converge; draw its points open
+# v4 revision: the 20-29 four-dimensional fit did not converge; draw its points open
 for j_, r_ in enumerate(rows):
     if not r_.get("converged", True):
         ax[1].plot(x[j_] - 0.08, r_["latent_corr_rate"], "o", mfc="white", mec=C["raw"], ms=4, zorder=5)
@@ -99,7 +99,7 @@ for key, src, mk, off in (("raw", raw, "o", -0.1), ("adj", adj, "s", 0.1), ("hlr
     v, e = err(src["bins"], "n_star_050", "n_star_050_ci")
     ax[1].errorbar(x + off, v, yerr=e, marker=mk, color=C[key], ms=4, lw=1, capsize=2,
                    label={"raw": "Rate, raw", "adj": "Rate, adjusted", "hlr": "Half-life multiplier"}[key])
-# r3 fix (desk-r3-09): the 20-29 n* of both rates rests on nearly flat likelihoods (Table 2, note b); draw it open
+# v4 revision: the 20-29 n* of both rates rests on nearly flat likelihoods (Table 2, note b); draw it open
 for key, src, mk, off in (("raw", raw, "o", -0.1), ("adj", adj, "s", 0.1)):
     ax[1].plot(x[0] + off, src["bins"][0]["n_star_050"], mk, mfc="white", mec=C[key], ms=4, zorder=5)
 ax[1].plot(x, [b["median_n"] for b in raw["bins"]], color="k", ls="--", lw=1, label="Median traces")
@@ -132,7 +132,7 @@ for k_ax, keys in ((0, (("naive", "Naive", "o", "none"),)),
         px, py, e, lo, hi = pv(key)
         ax[k_ax].errorbar(px, py, yerr=e, fmt=mk, mfc=fill, mec=C["adj"], ecolor=C["adj"], ms=4.5, lw=0.8,
                           capsize=1.5, label=lab)
-        if key == "shrunk_drift":   # r3 fix (desk-r3-09): the 20-29 drift-aware point is not interpreted; half-filled
+        if key == "shrunk_drift":   # v4 revision: the 20-29 drift-aware point is not interpreted; half-filled
             ax[k_ax].plot(px[0], py[0], mk, ms=4.5, mec=C["adj"], mfc=C["adj"], fillstyle="left",
                           markerfacecoloralt="white", zorder=5)
         allv += list(px) + list(lo) + list(hi)

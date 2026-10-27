@@ -11,6 +11,7 @@
 #  sim: observed/predicted ratios over the non-zero grid points, variance recovery ratios, the
 #    probe's predicted headroom ratio
 #  a1_bins_ci_nonoverlap: bins in which the raw and adjusted n* intervals do not overlap (addendum A1)
+#  conc_null_<kind>: the concentration of the shrunk gains and its stationary benchmark (below)
 import os, json
 import numpy as np
 
@@ -84,7 +85,7 @@ th = J("RESULTS_v3_theory_hlr.json")
 b0 = [x for x in th["bins"] if x["bin"] == "20-29"][0]
 OUT["hlr_pred_shrunk_share_of_base_20_29"] = r(b0["predicted_shrunk"] / b0["base_logloss_per_trial"], 4)
 
-# r2 revision (gate round 2, 27 October 2026), arithmetic only:
+# Revision of 27 October 2026, arithmetic only:
 #  boundary: cells whose stored value sits exactly on a rounding boundary of the printed precision
 #    (the stored value is already rounded and its last digit is 5), recomputed without that rounding.
 #    These values are kept unrounded. n* = s1^2/tau^2 (rho* = 0.5, Eq. 3) per bin from the stored
@@ -140,7 +141,7 @@ OUT["heldout_traces_shortest3"] = dict(min=int(ho_.min()), max=int(ho_.max()))
 se = [x["latent_corr_rate_se"] for x in raw["latent_split"]["chrono"] if x["bin"] in LAB[1:]]
 OUT["chrono_rate_se_raw_30plus"] = dict(min=min(se), max=max(se))
 
-# r3 revision (gate round 3, 27 October 2026), arithmetic only:
+# Revision of 27 October 2026 (continued), arithmetic only:
 #  drift_first_second_<kind>: per bin, the stability coefficient implied by the first-to-second-half
 #    four-dimensional fit (latent_split.chrono of the hierarchical result file): kappa_fs = covariance
 #    of the two half rates / variance of the first-half rate; and Eq. (2a) evaluated exactly as for the
@@ -175,7 +176,7 @@ for kind, H_ in (("adj", adj), ("raw", raw)):
 se = [x["latent_corr_rate_se"] for x in adj["latent_split"]["chrono"] if x["bin"] in LAB[1:]]
 OUT["chrono_rate_se_adj_30plus"] = dict(min=min(se), max=max(se))
 
-# r4 revision (gate round 4, 27 October 2026), arithmetic only, values kept unrounded:
+# Revision of 27 October 2026 (continued), arithmetic only, values kept unrounded:
 #  sim.replicate_pair_shrunk_diff: absolute difference of the observed shrunk gains of the two simulated
 #    datasets at the estimated variance (the 1x grid point and the observed design of the probe draw)
 #  raw_tau2_ratio_50_79_to_250: between-learner variance of the raw rate, 50-79 bin over 250+ bin
@@ -183,5 +184,65 @@ pr_ = J("RESULTS_v3_sim_probe_m1.json")["observed_design"]["personalization"]["o
 OUT["sim"]["replicate_pair_shrunk_diff"] = abs(pr_ - g1["personalization"]["observed_shrunk"])
 rbin = {b["label"]: b for b in raw["bins"]}
 OUT["raw_tau2_ratio_50_79_to_250"] = rbin["50-79"]["tau2"] / rbin["250+"]["tau2"]
+
+# Revision of 27 October 2026 (continued): the concentration of the shrunk gains and its stationary benchmark.
+#  conc_null_<kind>: per bin, the 1% of learners with the largest absolute contributions to the summed
+#    shrunk gain, chosen exactly as in 10_derived.py (k = max(1, round(0.01 m)) of the m learners with
+#    held-out trials). Observed: the share of the summed gain they carry and the gain of the others and of
+#    all learners per held-out trial (the first two equal RESULTS_v3_derived.json at its precision).
+#    Benchmark (arithmetic and seeded random numbers on the per-learner file, nothing re-estimated): the
+#    same quantities in NDRAW data sets simulated from the stationary model behind Eq. (2), with each
+#    learner's J, w = clip(w_eb, 0, 1) and tau2_bin: a true deviation d ~ N(0, tau2), a shrunk estimate
+#    deviation x = w d + N(0, w (1 - w) tau2) (a posterior mean with reliability w), held-out score noise
+#    s ~ N(0, J) and the second-order gain s x + 1/2 J (d^2 - (x - d)^2), whose mean is
+#    pred_shrunk = 1/2 J tau2 w; the same top-1% rule is applied to each data set. One generator per cell,
+#    np.random.default_rng((SEED_NULL, rate index, bin index)), rates in the order adj, raw; in each data
+#    set d, the error of x and s are drawn in that order (standard normals, scaled). Stored: median, 2.5th
+#    and 97.5th percentiles of the share and of the gain without the top 1% (share_exp, gain_wo_exp); the
+#    fraction of data sets whose share is at least the observed one and whose gain without the top 1% is at
+#    most the observed one; the fraction in which the gain without the top 1% lies below the summed
+#    pred_shrunk of the same remaining learners (the selection on the outcome lowers it by construction);
+#    and the mean summed gain per trial over the data sets (close to the bin's predicted_shrunk).
+NDRAW, SEED_NULL = 2000, 20261027
+OUT["conc_null_draws"], OUT["conc_null_seed"] = NDRAW, SEED_NULL
+for ki, kind in enumerate(("adj", "raw")):
+    P_ = PTa if kind == "adj" else PTr
+    rows = []
+    for i, lab in enumerate(LAB):
+        mm = (P_["bin"].values == i) & (P_["heldout_trials"].values > 0)
+        m = int(mm.sum())
+        k = max(1, int(round(0.01 * m)))
+        g = (P_["L_pop"] - P_["L_shrunk"]).values[mm]
+        t_ = P_["heldout_trials"].values[mm]
+        top = np.argsort(-np.abs(g))[:k]
+        keep = np.ones(m, bool)
+        keep[top] = False
+        Jm, t2m = P_["J"].values[mm], P_["tau2_bin"].values[mm]
+        w = np.clip(P_["w_eb"].values[mm], 0, 1)
+        ps = P_["pred_shrunk"].values[mm]
+        sd_d, sd_e, sd_s = np.sqrt(t2m), np.sqrt(w * (1 - w) * t2m), np.sqrt(Jm)
+        rng = np.random.default_rng((SEED_NULL, ki, i))
+        sh, wo, full = np.empty(NDRAW), np.empty(NDRAW), np.empty(NDRAW)
+        below = np.zeros(NDRAW, bool)
+        for rr in range(NDRAW):
+            d = sd_d * rng.standard_normal(m)
+            x = w * d + sd_e * rng.standard_normal(m)
+            s = sd_s * rng.standard_normal(m)
+            gs = s * x + 0.5 * Jm * (d * d - (x - d) ** 2)
+            tp = np.argsort(-np.abs(gs))[:k]
+            kp = np.ones(m, bool)
+            kp[tp] = False
+            sh[rr] = gs[tp].sum() / gs.sum()
+            wo[rr] = gs[kp].sum() / t_[kp].sum()
+            full[rr] = gs.sum() / t_.sum()
+            below[rr] = wo[rr] < ps[kp].sum() / t_[kp].sum()
+        sh_o, wo_o = float(g[top].sum() / g.sum()), float(g[keep].sum() / t_[keep].sum())
+        rows.append(dict(bin=lab, n_learners=m, k_top1pct=k, share_obs=sh_o, gain_wo_obs=wo_o,
+                         gain_all_obs=float(g.sum() / t_.sum()),
+                         share_exp=[float(v) for v in np.percentile(sh, [50, 2.5, 97.5])],
+                         gain_wo_exp=[float(v) for v in np.percentile(wo, [50, 2.5, 97.5])],
+                         frac_share_ge_obs=float(np.mean(sh >= sh_o)), frac_gain_wo_le_obs=float(np.mean(wo <= wo_o)),
+                         frac_gain_wo_below_pred_kept=float(np.mean(below)), mean_gain_all=float(full.mean())))
+    OUT["conc_null_" + kind] = rows
 json.dump(OUT, open(os.path.join(OUTD, "RESULTS_v4_derived.json"), "w", encoding="utf-8"), indent=1)
 print(json.dumps(OUT, indent=1))

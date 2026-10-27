@@ -42,10 +42,10 @@ ALIASES = {
 }
 # v4 revision: der4 is written by 16_derived_v4.py from the frozen files into results_v4/
 RES4 = os.path.join(os.path.dirname(HERE), "results_v4")
-# r2 revision: jul is the result file of the confirmatory run of 12 July 2026, as published in the
+# v4 revision: jul is the result file of the confirmatory run of 12 July 2026, as published in the
 # public repository (commit 0d0f0da1, results/RESULTS.json; local copy in the paper folder's repo/)
 RESJUL = os.environ.get("CBB_JULY_RESULTS") or os.path.join(os.path.dirname(os.path.dirname(HERE)), "repo", "results")
-# r4 revision: kc is the output of the July feasibility check (killcheck.py, 10,000 learners) that the
+# v4 revision: kc is the output of the July feasibility check (killcheck.py, 10,000 learners) that the
 # plan's first paragraph reports on; it lies in the paper folder's results/
 RESKC = os.environ.get("CBB_KILLCHECK_DIR") or os.path.join(os.path.dirname(os.path.dirname(HERE)), "results")
 TOKEN = re.compile(r"\{\{([a-z0-9]+):([^|}]+)(?:\|([^}]+))?\}\}")
@@ -147,7 +147,7 @@ def fmt(v, f):
 
 
 def on_boundary(val, f, s):
-    # r2 revision (recompute-r2-01): a stored value that is already rounded and whose dropped part at the
+    # v4 revision: a stored value that is already rounded and whose dropped part at the
     # printed precision is exactly 5 cannot be rounded correctly; such a cell must be printed at the
     # stored precision or resolved from an unrounded source (results_v4, "boundary")
     from decimal import Decimal
