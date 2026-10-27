@@ -39,7 +39,7 @@ REPO_V4_PUBLIC = "--repo-v4-public" in sys.argv
 if REPO_V4_PUBLIC:
     CODE_NAMED = ("The analysis code that reproduces every reported number from the public traces, the result "
                   "files, the dated analysis plan of 12 July 2026 and the exploratory addendum of 14 October "
-                  "2026 are available at " + REPO + ".")
+                  "2026 are available at " + REPO + " (version tagged submission-2026).")
     CODE_ANON = ("The analysis code that reproduces every reported number from the public traces, the result "
                  "files, the dated analysis plan of 12 July 2026 and the exploratory addendum of 14 October "
                  "2026 are available in a public repository; the link is given on the title page.")

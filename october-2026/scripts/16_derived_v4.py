@@ -203,8 +203,26 @@ OUT["raw_tau2_ratio_50_79_to_250"] = rbin["50-79"]["tau2"] / rbin["250+"]["tau2"
 #    most the observed one; the fraction in which the gain without the top 1% lies below the summed
 #    pred_shrunk of the same remaining learners (the selection on the outcome lowers it by construction);
 #    and the mean summed gain per trial over the data sets (close to the bin's predicted_shrunk).
+#  conc_null_mc95: the Monte Carlo precision of those percentiles, from the same draws (no further random
+#    numbers): for each stored percentile q (50, 2.5, 97.5) the distribution-free 95% interval between the
+#    order statistics of ranks floor(N q - 1.96 sqrt(N q (1 - q))) and ceil(N q + 1.96 sqrt(N q (1 - q)))
+#    of the N simulated values; per cell the largest distance from a stored percentile to an end of its
+#    interval, for the share and for the gain without the top 1%, and the largest over the 12 cells.
 NDRAW, SEED_NULL = 2000, 20261027
 OUT["conc_null_draws"], OUT["conc_null_seed"] = NDRAW, SEED_NULL
+
+
+def mc95_halfwidth(v):
+    v = np.sort(np.asarray(v, float))
+    n_, out_ = len(v), 0.0
+    for q, p in zip((0.5, 0.025, 0.975), np.percentile(v, [50, 2.5, 97.5])):
+        h_ = 1.96 * np.sqrt(n_ * q * (1 - q))
+        lo_, hi_ = max(1, int(np.floor(n_ * q - h_))), min(n_, int(np.ceil(n_ * q + h_)))
+        out_ = max(out_, float(p - v[lo_ - 1]), float(v[hi_ - 1] - p))
+    return out_
+
+
+mc_rows = []
 for ki, kind in enumerate(("adj", "raw")):
     P_ = PTa if kind == "adj" else PTr
     rows = []
@@ -243,6 +261,19 @@ for ki, kind in enumerate(("adj", "raw")):
                          gain_wo_exp=[float(v) for v in np.percentile(wo, [50, 2.5, 97.5])],
                          frac_share_ge_obs=float(np.mean(sh >= sh_o)), frac_gain_wo_le_obs=float(np.mean(wo <= wo_o)),
                          frac_gain_wo_below_pred_kept=float(np.mean(below)), mean_gain_all=float(full.mean())))
+        mc_rows.append(dict(rate=kind, bin=lab, share=mc95_halfwidth(sh), gain_wo=mc95_halfwidth(wo)))
     OUT["conc_null_" + kind] = rows
+OUT["conc_null_mc95"] = dict(share_max=max(x["share"] for x in mc_rows), gain_wo_max=max(x["gain_wo"] for x in mc_rows),
+                             per_cell=mc_rows)
+
+# Revision of 27 October 2026 (continued), arithmetic only, values kept unrounded:
+#  raw_slope_common_scaling: if every learner's raw slope were scaled by the ratio of the population
+#    slopes of the 250+ and 20-29 bins, the between-learner variance would fall by the factor
+#    var_factor = (mu_20-29 / mu_250+)^2; log_share is the part of the observed fall of tau2 from 20-29
+#    to 250+ that this factor accounts for on a log scale, ln(var_factor) / ln(tau2_20-29 / tau2_250+)
+_m1, _m6 = rbin["20-29"]["mu"][1], rbin["250+"]["mu"][1]
+_vf = (_m1 / _m6) ** 2
+OUT["raw_slope_common_scaling"] = dict(var_factor=_vf, tau2_factor=rbin["20-29"]["tau2"] / rbin["250+"]["tau2"],
+                                       log_share=float(np.log(_vf) / np.log(rbin["20-29"]["tau2"] / rbin["250+"]["tau2"])))
 json.dump(OUT, open(os.path.join(OUTD, "RESULTS_v4_derived.json"), "w", encoding="utf-8"), indent=1)
 print(json.dumps(OUT, indent=1))
