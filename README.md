@@ -1,6 +1,6 @@
-# Is a Learner's Rate of Forgetting Worth Knowing? Analysis plan, code and results
+# Deciding Whether to Personalize Person Parameters From Practice Logs: Reliability, Drift and Predictive Headroom of a Learner's Rate of Forgetting: analysis plan, code and results
 
-This repository holds the dated analysis plan and the confirmatory analysis behind the manuscript "Is a Learner's Rate of Forgetting Worth Knowing? Reliability, Drift and Predictive Headroom in Naturalistic Spaced Repetition" and, in the folder `october-2026/`, the code and result files of the analyses that the manuscript reports. An earlier working title of the same study was "How Many Reviews Before We Know Your Forgetting Curve? Minimum-Evidence Boundaries for Personalized Spaced Repetition".
+This repository holds the dated analysis plan and the confirmatory analysis behind the manuscript "Deciding Whether to Personalize Person Parameters From Practice Logs: Reliability, Drift and Predictive Headroom of a Learner's Rate of Forgetting" and, in the folder `october-2026/`, the code and result files of the analyses that the manuscript reports. Earlier working titles of the same study were "Is a Learner's Rate of Forgetting Worth Knowing? Reliability, Drift and Predictive Headroom in Naturalistic Spaced Repetition" and "How Many Reviews Before We Know Your Forgetting Curve? Minimum-Evidence Boundaries for Personalized Spaced Repetition".
 
 ## Contents
 
